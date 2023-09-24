@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rover-service
+  labels:
+    app: rover
+    tier: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: rover-service
+  template:
+    metadata:
+      labels:
+        app: rover-service
+    spec:
+      containers:
+        - name: rover-service
+          imagePullPolicy: IfNotPresent
+          image: rover-service:latest
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /q/health/live
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /q/health/ready
+              port: 8080

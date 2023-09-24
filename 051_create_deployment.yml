@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rover-ui
+  labels:
+    app: rover-ui
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rover-ui
+  template:
+    metadata:
+      labels:
+        app: rover-ui
+    spec:
+      containers:
+      - name: rover-ui
+        imagePullPolicy: IfNotPresent
+        image: rover-ui:latest
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - mountPath: /config
+            name: config-volume
+        livenessProbe:
+          httpGet:
+            path: /assets/json/config.json
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /assets/json/config.json
+            port: 80
+      volumes:
+        - name: config-volume
+          configMap:
+            name: rover-ui-config
+            items:
+              - key: external-config.json
+                path: config.json

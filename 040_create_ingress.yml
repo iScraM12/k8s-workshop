@@ -1,0 +1,20 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rover-service
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - host: rover-service.internal
+      http:
+        paths:
+          - path: /rover-service(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: rover-service
+                port:
+                  number: 8090

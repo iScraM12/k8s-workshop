@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rover-service
+spec:
+  containers:
+  - name: rover-service
+    imagePullPolicy: always
+    image: rover-service:latest
+    ports:
+    - containerPort: 8080
+

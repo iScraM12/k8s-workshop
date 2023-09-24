@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rover-ui-config
+  labels:
+    app: rover-ui
+data:
+  external-config.json: |
+    {
+        "roverServiceEndpoint": "http://rover-service.internal/rover-service/api"
+    }
