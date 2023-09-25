@@ -71,3 +71,10 @@ configmap/rover-ui-config created
 ```
 rffffffffffffflflflflflfffffrrffffflflflflflfffffffffffff
 ```
+
+# WICHTIG
+
+Zur ./etc/hosts Datei des Zielsystems hinzufügen
+```
+127.0.0.1 rover-service.internal
+```
