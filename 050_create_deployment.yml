@@ -24,9 +24,9 @@ spec:
             - containerPort: 80
           livenessProbe:
             httpGet:
-              path: /
+              path: /assets/json/config.json
               port: 80
           readinessProbe:
             httpGet:
-              path: /
+              path: /assets/json/config.json
               port: 80

@@ -18,7 +18,8 @@ kubectl delete -f 010_create_pod.yml
 
 ## Pods/Deployments erkunden
 ```
-kubectl get pods -l app=rover-service\
+kubectl apply -f 020_create_deployment.yml
+kubectl get pods -l app=rover-service
 kubectl get deployment rover-service -o wide
 ```
 

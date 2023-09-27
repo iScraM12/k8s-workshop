@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rover-service
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         image: rover-service:latest
         ports:
           - containerPort: 8080
